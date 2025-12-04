@@ -1,11 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
-# Linux Kernel Heap (SLUB Allocator) - Từ Cơ Bản Đến Exploitation
-
-## Mục tiêu và Bối cảnh
-
-Bạn đã quen với **userland heap exploitation** (ptmalloc, tcache, bins) từ CTF, và muốn chuyển sang **kernel heap** cho security research. Kernel heap có những khác biệt cơ bản về kiến trúc và cơ chế bảo vệ, dẫn đến các primitive exploit khác biệt.[^1][^2][^3]
-
 ## Phần 1: Background - Memory Management Cơ Bản
 
 ### 1.1 Page - Đơn vị quản lý bộ nhớ
@@ -403,15 +395,6 @@ kmalloc(32) → trả về fake_obj
 2. **Per-CPU lockless**: mỗi CPU có freelist riêng → nhanh nhưng có race condition
 3. **Fixed-size pools**: slab cache system → dễ dự đoán layout
 4. **Kernel context**: exploit target là kernel struct (ops, function ptr, cred) → RCE/privesc
-
-**Roadmap tiếp theo cho bạn**:
-
-- Đọc source code `mm/slub.c` trong Linux kernel
-- Phân tích CVE kernel heap cụ thể (CVE-2017-11176, CVE-2022-29582)
-- Làm bài CTF kernel: D3CTF, 0CTF, HITCON kernel challenges
-- Học kernel mitigation bypass: KASLR, SMEP, SMAP, kCFI
-
-<div align="center">⁂</div>
 
 [^1]: https://argp.github.io/2012/01/03/linux-kernel-heap-exploitation/
 
